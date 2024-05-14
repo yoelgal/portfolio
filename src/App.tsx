@@ -70,19 +70,19 @@ function App() {
             className={`w-full bg-rich_black text-md z-20 fixed top-0 transition-all duration-300 ${isScrolled ? 'opacity-90 shadow-lg' : 'opacity-100'}`}>
           <div className="container mx-auto flex justify-between items-center py-4 px-6">
             <img src={Logo} onClick={() => handleScrollToSection('main')} className="w-12 cursor-pointer" alt="Logo"/>
-            <nav className="hidden md:flex space-x-4">
+            <nav className="hidden md:flex space-x-4 font-source-code">
               <button
                   onClick={() => handleScrollToSection('about')}
                   className="hover:text-non_photo_blue-400 transition-colors duration-300"
               >
-                <span className="font-source-code text-non_photo_blue-400">0001. </span>
+                <span className="text-non_photo_blue-400">0001. </span>
                 About Me
               </button>
               <button
                   onClick={() => handleScrollToSection('portfolio')}
                   className="hover:text-non_photo_blue-400 transition-colors duration-300"
               >
-                <span className="font-source-code text-non_photo_blue-400">0010. </span>
+                <span className="text-non_photo_blue-400">0010. </span>
                 Portfolio
               </button>
             </nav>
