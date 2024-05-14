@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import Logo from './assets/logo.png'; // Assuming you have a logo
 import './index.css';
 import Wave from 'react-wavify';
+import {Analytics} from '@vercel/analytics/react';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -264,7 +265,7 @@ function App() {
             </Wave></div>
 
         </footer>
-
+        <Analytics/>
       </div>
   );
 }
