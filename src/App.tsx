@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react';
 import Logo from './assets/logo.png'; // Assuming you have a logo
 import './index.css';
+import Wave from 'react-wavify';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -203,8 +204,30 @@ function App() {
             </button>
           </nav>
         </div>
-        <footer className="w-full bg-rich_black text-white py-4 text-center">
-          <p className="text-sm">© {new Date().getFullYear()} Yoel Gal. All rights reserved.</p>
+        <footer className="relative w-full text-center">
+          <div className="relative z-10 py-4">
+            <p className="text-sm">© {new Date().getFullYear()} Yoel Gal. All rights reserved.</p>
+          </div>
+          <div className="hidden sm:block">
+            <Wave
+                fill="url(#gradient)"
+                paused={false}
+                options={{
+                  height: 30,
+                  amplitude: 20,
+                  speed: 0.3,
+                  points: 5,
+                }}
+
+            >
+              <defs>
+                <linearGradient id="gradient" gradientTransform="rotate(90)">
+                  <stop offset="10%" stopColor="#03DDFF"/>
+                  <stop offset="90%" stopColor="#0000CF"/>
+                </linearGradient>
+              </defs>
+            </Wave></div>
+
         </footer>
 
       </div>
