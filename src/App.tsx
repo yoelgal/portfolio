@@ -3,6 +3,10 @@ import Logo from './assets/logo.png'; // Assuming you have a logo
 import './index.css';
 import Wave from 'react-wavify';
 import {Analytics} from '@vercel/analytics/react';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+import Portfolio from './components/portfolio';
+
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -206,11 +210,7 @@ function App() {
               </ul>
             </div>
           </section>
-          <section id="portfolio"
-                   className="w-full max-w-4xl flex flex-col items-center justify-center h-screen text-center">
-            <h2 className="text-4xl font-bold mb-4 text-non_photo_blue-400">Portfolio</h2>
-            <p className="text-xl mb-4">Coming soon...</p>
-          </section>
+          <Portfolio/>
         </main>
         <div
             className={`fixed top-0 right-0 h-full bg-rich_black-600 text-white transform transition-transform duration-300 ease-in-out ${
