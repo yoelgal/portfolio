@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import Logo from './assets/logo.png'; // Assuming you have a logo
 import './index.css';
 import Wave from 'react-wavify';
@@ -7,6 +7,8 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
+  const aboutMeRef = useRef<HTMLDivElement>(null);
+
   const handleScroll = () => {
     if (window.scrollY > 50) {
       setIsScrolled(true);
@@ -14,6 +16,33 @@ function App() {
       setIsScrolled(false);
     }
   };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('animate-slide-in-from-left');
+            }
+          });
+        },
+        {
+          threshold: 0.01,
+        }
+    );
+
+    if (aboutMeRef.current) {
+      const paragraphs = aboutMeRef.current.querySelectorAll('p');
+      paragraphs.forEach((p) => observer.observe(p));
+    }
+
+    return () => {
+      if (aboutMeRef.current) {
+        const paragraphs = aboutMeRef.current.querySelectorAll('p');
+        paragraphs.forEach((p) => observer.unobserve(p));
+      }
+    };
+  }, []);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -72,7 +101,13 @@ function App() {
             className={`flex-grow flex flex-col items-center justify-center p-4 transition-all duration-300 ${isMenuOpen ? 'blur-lg' : ''}`}>
           <section id="main"
                    className="w-full max-w-4xl flex flex-col items-center justify-center h-screen text-center">
-            <p className="font-source-code text-xl p-3 text-non_photo_blue-400">Hello World! I am</p>
+            <p className="font-source-code text-xl p-3 text-non_photo_blue-400 wave-text space-x-0.5">
+              {Array.from("Hello World! I am").map((char, index) => (
+                  <span key={index} style={{'--animation-delay': `${index * 0.1}s`} as React.CSSProperties}>
+                    {char}
+                  </span>
+              ))}
+            </p>
             <h1 className="text-6xl font-bold mb-4 ">Yoel Gal.</h1>
             <p className="text-xl mb-4 pb-3">
               A software engineer from London, England. I develop robust backend systems and user-friendly web
@@ -99,7 +134,7 @@ function App() {
               </a>
             </div>
           </section>
-          <section id="about"
+          <section id="about" ref={aboutMeRef}
                    className="w-full max-w-4xl flex flex-col md:flex-row items-start justify-center h-full pb-10 p-5 pt-24">
             <div className="md:w-2/3 md:pr-8">
               <h2 className="text-4xl font-bold mb-4 "><span

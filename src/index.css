@@ -1,3 +1,42 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/*SLide in from left animation*/
+
+@keyframes slide-in-from-left {
+    from {
+        transform: translateX(-300px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.animate-slide-in-from-left {
+    animation: slide-in-from-left 1s ease-out forwards;
+}
+
+/*text in wave*/
+
+@keyframes wave {
+    0%, 20%, 100% {
+        transform: translateY(0);
+    }
+    10% {
+        transform: translateY(-10px);
+    }
+}
+
+.wave-text {
+    display: inline-block;
+    letter-spacing: 1px;
+}
+
+.wave-text span {
+    display: inline-block;
+    animation: wave 3s ease-in-out infinite;
+    animation-delay: var(--animation-delay);
+}
