@@ -69,7 +69,7 @@ function App() {
         <header
             className={`w-full bg-rich_black text-md z-20 fixed top-0 transition-all duration-300 ${isScrolled ? 'opacity-90 shadow-lg' : 'opacity-100'}`}>
           <div className="container mx-auto flex justify-between items-center py-4 px-6">
-            <img src={Logo} onClick={() => handleScrollToSection('main')} className="w-12 cursor-pointer" alt="Logo"/>
+            <img src={Logo} onClick={() => handleScrollToSection('main')} className="w-10 cursor-pointer" alt="Logo"/>
             <nav className="hidden md:flex space-x-4 font-source-code">
               <button
                   onClick={() => handleScrollToSection('about')}
@@ -107,15 +107,19 @@ function App() {
           <section id="main"
                    className="w-full max-w-4xl flex flex-col items-center justify-center h-screen text-center">
             <p className="font-source-code text-xl p-3 text-non_photo_blue-400 wave-text space-x-0.5">
-              {Array.from("Hello World! I am").map((char, index) => (
-                  <span key={index} style={{'--animation-delay': `${index * 0.1}s`} as React.CSSProperties}>
+              {Array.from("Hello.World!.I.am").map((char, index) => (
+                  <span className={`${char === '.' ? "text-rich_black" : ""}`} key={index}
+                        style={{'--animation-delay': `${index * 0.1}s`} as React.CSSProperties}>
                     {char}
                   </span>
               ))}
             </p>
             <h1 className="text-6xl font-bold mb-4 ">Yoel Gal.</h1>
+            <p className="text-xl pb-3">
+              A software engineer from London, England.
+            </p>
             <p className="text-xl mb-4 pb-3">
-              A software engineer from London, England. I develop robust backend systems and user-friendly web
+              I develop robust backend systems and user-friendly web
               applications.
             </p>
             <div className="flex justify-center space-x-4">
@@ -153,11 +157,6 @@ function App() {
                 I recently interned as a Junior Backend Developer, where I developed an API for a machine learning
                 service. This included working with FastAPI, OpenTelemetry for tracing and logging, and implementing
                 distroless dockerization techniques.
-              </p>
-              <p className="text-lg mb-4">
-                Previously, I played a pivotal role as a Full Stack Developer at my school, where I designed and
-                implemented a digital dashboard. I worked extensively with Express.js for backend development and Vue.js
-                for the frontend, integrating public services and managing proprietary data with MongoDB.
               </p>
               <p className="text-lg mb-4">
                 My notable projects include <span className="text-non_photo_blue-400">SkillSwap</span>, a platform for
