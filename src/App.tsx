@@ -6,6 +6,8 @@ import {Analytics} from '@vercel/analytics/react';
 // @ts-expect-error
 import Portfolio from './components/portfolio';
 
+// import Blob from "./components/blob.tsx";
+
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -66,10 +68,8 @@ function App() {
   return (
       <div className="relative min-h-screen bg-rich_black text-blue-100 flex flex-col font-sans">
         <header
-            className={`w-full bg-rich_black text-md z-20 fixed top-0 transition-all duration-300 ${isScrolled ? 'opacity-90 shadow-lg' : 'opacity-100'}`}>
+            className={`w-full text-md z-20 fixed top-0 transition-all duration-300 ${isScrolled ? 'opacity-90 shadow-lg' : 'opacity-100'} ${isMenuOpen ? 'bg-transparent opacity-100 shadow-transparent' : `${isScrolled ? 'opacity-90 shadow-lg bg-rich_black' : 'opacity-100 bg-rich_black'}`}`}>
           <div className="container mx-auto flex justify-between items-center py-4 px-6">
-            {/*<img src={Logo} onClick={() => handleScrollToSection('main')}*/}
-            {/*     className="w-10 cursor-pointer hover:scale-105 hover:shadow-glow" alt="Logo"/>*/}
             <p className="text-4xl cursor-pointer bg-transparent font-anton text-non_photo_blue-400 ease-in-out duration-300 hover:scale-110 hover:opacity-90"
                onClick={() => handleScrollToSection('main')}>YG
             </p>
@@ -91,7 +91,7 @@ function App() {
             </nav>
             <div className="md:hidden">
               <button onClick={() => setIsMenuOpen(!isMenuOpen)}
-                      className="relative z-30 flex flex-col justify-center items-center ease-in-out duration-300 hover:scale-110">
+                      className="relative z-30 flex flex-col justify-center items-center ease-in-out duration-300 hover:scale-110 ">
                 <span
                     className={`flex flex-row-reverse w-6`}
                 >
@@ -126,7 +126,7 @@ function App() {
                   </span>
               ))}
             </p>
-            <h1 className="text-6xl font-bold mb-4 ">Yoel Gal.</h1>
+            <h1 className="text-6xl font-bold mb-4 ">Yoel Gal</h1>
             <p className="text-xl pb-3">
               A software engineer from London, England.
             </p>

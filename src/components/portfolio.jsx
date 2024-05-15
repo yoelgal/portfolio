@@ -66,18 +66,26 @@ const Portfolio = () => {
             </div>
 
             {selectedProject && (
-                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-                    <div className="bg-rich_black-600 p-8 rounded-lg max-w-md mx-auto text-left">
+                <div
+                    className={`fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 transition-opacity duration-500 ${
+                        selectedProject ? 'opacity-100' : 'opacity-0'
+                    }`}
+                >
+                    <div className={`bg-rich_black-600 p-8 rounded-lg max-w-md mx-auto text-left`}>
                         <h3 className="text-3xl font-bold">{selectedProject.title}</h3>
                         {selectedProject.details.map((detail) => (
-                            <p className="mt-4">{detail}</p>
+                            <p key={detail} className="mt-4">{detail}</p>
                         ))}
-                        <button onClick={() => setSelectedProject(null)}
-                                className="mt-4 text-non_photo_blue-400">Close
+                        <button
+                            onClick={() => setSelectedProject(null)}
+                            className="mt-4 text-non_photo_blue-400"
+                        >
+                            Close
                         </button>
                     </div>
                 </div>
             )}
+
         </section>
     );
 };

@@ -36,6 +36,6 @@
 
 .wave-text span {
     display: inline-block;
-    animation: wave 3s ease-in-out infinite;
+    animation: wave 2.5s ease-in-out infinite;
     animation-delay: var(--animation-delay);
 }
