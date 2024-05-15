@@ -1,5 +1,4 @@
 import React, {useEffect, useRef, useState} from 'react';
-import Logo from './assets/logo.png'; // Assuming you have a logo
 import './index.css';
 import Wave from 'react-wavify';
 import {Analytics} from '@vercel/analytics/react';
@@ -69,7 +68,11 @@ function App() {
         <header
             className={`w-full bg-rich_black text-md z-20 fixed top-0 transition-all duration-300 ${isScrolled ? 'opacity-90 shadow-lg' : 'opacity-100'}`}>
           <div className="container mx-auto flex justify-between items-center py-4 px-6">
-            <img src={Logo} onClick={() => handleScrollToSection('main')} className="w-10 cursor-pointer" alt="Logo"/>
+            {/*<img src={Logo} onClick={() => handleScrollToSection('main')}*/}
+            {/*     className="w-10 cursor-pointer hover:scale-105 hover:shadow-glow" alt="Logo"/>*/}
+            <p className="text-4xl cursor-pointer bg-transparent font-anton text-non_photo_blue-400 ease-in-out duration-300 hover:scale-110 hover:opacity-90"
+               onClick={() => handleScrollToSection('main')}>YG
+            </p>
             <nav className="hidden md:flex space-x-4 font-source-code">
               <button
                   onClick={() => handleScrollToSection('about')}
@@ -88,16 +91,25 @@ function App() {
             </nav>
             <div className="md:hidden">
               <button onClick={() => setIsMenuOpen(!isMenuOpen)}
-                      className="relative z-30 flex flex-col justify-center items-center">
-              <span
-                  className={`bg-non_photo_blue-500 block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${isMenuOpen ? 'rotate-45 translate-y-1' : '-translate-y-0.5'}`}
-              ></span>
+                      className="relative z-30 flex flex-col justify-center items-center ease-in-out duration-300 hover:scale-110">
                 <span
-                    className={`bg-non_photo_blue-500 block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm my-0.5 ${isMenuOpen ? 'opacity-0' : 'opacity-100'}`}
-                ></span>
+                    className={`flex flex-row-reverse w-6`}
+                >
+                  <span
+                      className={`bg-non_photo_blue-500 transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${isMenuOpen ? 'rotate-45 translate-y-1' : '-translate-y-0.5'}`}></span>
+                  </span>
                 <span
-                    className={`bg-non_photo_blue-500 block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${isMenuOpen ? '-rotate-45 -translate-y-1' : 'translate-y-0.5'}`}
-                ></span>
+                    className={`flex flex-row-reverse w-6`}
+                >
+                  <span
+                      className={`bg-non_photo_blue-500  transition-all duration-300 ease-out h-0.5 w-5 rounded-sm my-0.5 ${isMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
+                </span>
+                <span
+                    className={`flex flex-row-reverse w-6`}
+                >
+                  <span
+                      className={`bg-non_photo_blue-500 transition-all duration-300 ease-out h-0.5 rounded-sm ${isMenuOpen ? '-rotate-45 -translate-y-1 w-6' : 'translate-y-0.5 w-4'}`}></span>
+                </span>
               </button>
             </div>
           </div>

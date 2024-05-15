@@ -6,6 +6,9 @@ module.exports = {
     ],
     theme: {
         extend: {
+            boxShadow: {
+                'glow': '0 0 10px rgba(137, 210, 220, 0.7), 0 0 20px rgba(137, 210, 220, 0.5), 0 0 30px rgba(137, 210, 220, 0.3)',
+            },
             colors: {
                 'non_photo_blue': {
                     DEFAULT: '#89d2dc',
@@ -70,6 +73,7 @@ module.exports = {
             },
             fontFamily: {
                 'source-code': ["Source Code Pro", 'monospace'],
+                'anton': ["Anton", 'sans-serif'],
             },
         },
     },
