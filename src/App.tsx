@@ -1,7 +1,7 @@
-import React, {useEffect, useRef, useState} from 'react';
-import './index.css';
+import { Analytics } from '@vercel/analytics/react';
+import React, { useEffect, useRef, useState } from 'react';
 import Wave from 'react-wavify';
-import {Analytics} from '@vercel/analytics/react';
+import './index.css';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 import Portfolio from './components/portfolio';
@@ -135,7 +135,7 @@ function App() {
               applications.
             </p>
             <div className="flex justify-center space-x-4">
-              <a href="mailto:me@yoelgal.com"
+              <a href="mailto:yoelgal108@gmail.com"
                  className="px-4 py-2 border border-non_photo_blue-400 text-non_photo_blue-400 hover:bg-non_photo_blue-400 hover:text-rich_black-600 transition-colors duration-300 rounded">
                 Email Me
               </a>
