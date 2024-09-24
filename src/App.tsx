@@ -166,8 +166,8 @@ function App() {
                 variety of technologies.
               </p>
               <p className="text-lg mb-4">
-                I recently interned as a Junior Backend Developer, where I developed an API for a machine learning
-                service. This included working with FastAPI, OpenTelemetry for tracing and logging, and implementing
+                Interning as a Backend Developer, where I developed an API for a machine learning
+                service, bolstered my capabilities and helped me to become a more complete programmer. This included working with FastAPI, OpenTelemetry for tracing and logging, and implementing
                 distroless dockerization techniques.
               </p>
               <p className="text-lg mb-4">
