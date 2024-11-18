@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 
 const Blob: React.FC = () => {
   useEffect(() => {
@@ -18,10 +18,10 @@ const Blob: React.FC = () => {
   }, []);
 
   return (
-      <div
-          id="blob"
-          className="z-50 w-4 h-4 bg-non_photo_blue-400 rounded-full fixed pointer-events-none transform -translate-x-1/2 -translate-y-1/2 transition-transform duration-100"
-      ></div>
+    <div
+      id="blob"
+      className="pointer-events-none fixed z-50 h-4 w-4 -translate-x-1/2 -translate-y-1/2 transform rounded-full bg-non_photo_blue-400 transition-transform duration-100"
+    ></div>
   );
 };
 
