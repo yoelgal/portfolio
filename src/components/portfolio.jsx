@@ -1,9 +1,22 @@
 import { React, useState } from 'react';
+import CSWizard from '../assets/cswizard.png';
 import SkillSwap from '../assets/skillswap.png';
 import SpaceExplore from '../assets/space-explore.png';
-import CSWizard from '../assets/cswizard.png';
+// Using an existing image as a placeholder for StoryTime
+import StoryTimeImage from '../assets/storytime.png';
 
 const projects = [
+  {
+    title: '2025 - StoryTime',
+    description: 'AI-powered platform for generating personalized stories for children.',
+    image: StoryTimeImage, // Using placeholder image for now
+    details: [
+      "StoryTime is an innovative platform that uses advanced AI language models to create unique, personalized stories for children. Each story is tailored to the child's interests, preferences, and learning goals.",
+      "The application features an intuitive interface where parents can input their child's details and preferences, while the AI works behind the scenes to craft engaging, age-appropriate narratives that spark imagination and promote learning.",
+      'Technologies used: React-Native, Next.js, Supabase, Stripe, TypeScript, Node.js, OpenAI API, Expo, Git, GitHub, Vercel',
+    ],
+    link: 'https://storytime.parentwiseai.com',
+  },
   {
     title: '2024 - SkillSwap',
     description: 'A platform for university students to teach others and learn new skills.',

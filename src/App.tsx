@@ -190,7 +190,7 @@ function App() {
             </h2>
             <p className="mb-4 text-lg">
               Hi there! 👋 I'm Yoel, a full-stack software engineer from London, England. I'm
-              passionate about developing efficient and scalable backend systems and have hands-on
+              passionate about developing efficient and scalable systems and have hands-on
               experience with a variety of technologies.
             </p>
             <p className="mb-4 text-lg">
@@ -207,14 +207,16 @@ function App() {
               be ready for competition at Formula Student 2025.
             </p>
             <p className="mb-4 text-lg">
-              Interning as a Backend Developer, where I developed an API for a machine learning
-              service, bolstered my capabilities and helped me to become a more complete programmer.
-              This included working with FastAPI, OpenTelemetry for tracing and logging, and
-              implementing distroless dockerization techniques.
+              My latest project is <span className="text-non_photo_blue-400">StoryTime</span>, an
+              AI-powered website that generates personalized stories for children. By combining
+              modern web technologies with advanced language models, I've created an interactive
+              platform that crafts unique, age-appropriate narratives tailored to each child's
+              interests, preferences, and learning goals.
             </p>
             <p className="mb-4 text-lg">
-              My notable projects include <span className="text-non_photo_blue-400">SkillSwap</span>
-              , a platform for university students to exchange skills, and{' '}
+              Other notable projects include{' '}
+              <span className="text-non_photo_blue-400">SkillSwap</span>, a platform for university
+              students to exchange skills, and{' '}
               <span className="text-non_photo_blue-400">CS Wizard</span>, a site providing
               topic-specific practice papers for A-Level Computer Science, which attracted
               significant engagement globally.
@@ -229,6 +231,16 @@ function App() {
               <li className="transition-colors duration-300 hover:text-non_photo_blue-400">
                 <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer">
                   Python
+                </a>
+              </li>
+              <li className="transition-colors duration-300 hover:text-non_photo_blue-400">
+                <a href="https://en.cppreference.com/w/" target="_blank" rel="noopener noreferrer">
+                  C/C++
+                </a>
+              </li>
+              <li className="transition-colors duration-300 hover:text-non_photo_blue-400">
+                <a href="https://www.java.com/" target="_blank" rel="noopener noreferrer">
+                  Java
                 </a>
               </li>
               <li className="transition-colors duration-300 hover:text-non_photo_blue-400">
@@ -251,6 +263,11 @@ function App() {
                 </a>
               </li>
               <li className="transition-colors duration-300 hover:text-non_photo_blue-400">
+                <a href="https://expo.dev/" target="_blank" rel="noopener noreferrer">
+                  Expo (React Native)
+                </a>
+              </li>
+              <li className="transition-colors duration-300 hover:text-non_photo_blue-400">
                 <a href="https://nextjs.org/" target="_blank" rel="noopener noreferrer">
                   Next.js
                 </a>
@@ -266,8 +283,22 @@ function App() {
                 </a>
               </li>
               <li className="transition-colors duration-300 hover:text-non_photo_blue-400">
+                <a
+                  href="https://spring.io/projects/spring-boot"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Spring Boot
+                </a>
+              </li>
+              <li className="transition-colors duration-300 hover:text-non_photo_blue-400">
                 <a href="https://www.mongodb.com/" target="_blank" rel="noopener noreferrer">
                   MongoDB
+                </a>
+              </li>
+              <li className="transition-colors duration-300 hover:text-non_photo_blue-400">
+                <a href="https://supabase.com/" target="_blank" rel="noopener noreferrer">
+                  Supabase
                 </a>
               </li>
               <li className="transition-colors duration-300 hover:text-non_photo_blue-400">
@@ -288,6 +319,11 @@ function App() {
               <li className="transition-colors duration-300 hover:text-non_photo_blue-400">
                 <a href="https://git-scm.com/" target="_blank" rel="noopener noreferrer">
                   Git
+                </a>
+              </li>
+              <li className="transition-colors duration-300 hover:text-non_photo_blue-400">
+                <a href="https://vercel.com/" target="_blank" rel="noopener noreferrer">
+                  Vercel
                 </a>
               </li>
             </ul>
