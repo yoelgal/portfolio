@@ -1,10 +1,10 @@
 import { Analytics } from '@vercel/analytics/react';
 import React, { useEffect, useRef, useState } from 'react';
 import Wave from 'react-wavify';
+import BinaryRain from './components/BinaryRain';
 import './index.css';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
-import BinaryRain from './components/BinaryRain';
+// @ts-expect-error - No type definitions for portfolio component
 import Portfolio from './components/portfolio';
 
 // import Blob from "./components/blob.tsx";
