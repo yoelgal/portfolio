@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { MapPin, Calendar, Briefcase } from 'lucide-react';
 import { Experience } from '../../types';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect, useCallback } from 'react';
 
 interface ExperienceCardProps {
   experience: Experience;
@@ -11,9 +11,29 @@ interface ExperienceCardProps {
 
 export default function ExperienceCard({ experience, index, isLeft }: ExperienceCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
+  const lastMoveTime = useRef(0);
   const [tiltStyle, setTiltStyle] = useState({ rotateX: 0, rotateY: 0 });
+  const [isMobile, setIsMobile] = useState(false);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  // Detect mobile
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(hover: none)');
+    setIsMobile(mediaQuery.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mediaQuery.addEventListener('change', handler);
+    return () => mediaQuery.removeEventListener('change', handler);
+  }, []);
+
+  // Throttled mouse move handler
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    // Skip on mobile
+    if (isMobile) return;
+
+    // Throttle to 60fps (16ms)
+    const now = Date.now();
+    if (now - lastMoveTime.current < 16) return;
+    lastMoveTime.current = now;
+
     if (!cardRef.current) return;
 
     const rect = cardRef.current.getBoundingClientRect();
@@ -27,7 +47,7 @@ export default function ExperienceCard({ experience, index, isLeft }: Experience
     const rotateY = (centerX - x) / 20;
 
     setTiltStyle({ rotateX, rotateY });
-  };
+  }, [isMobile]);
 
   const handleMouseLeave = () => {
     setTiltStyle({ rotateX: 0, rotateY: 0 });
@@ -64,7 +84,7 @@ export default function ExperienceCard({ experience, index, isLeft }: Experience
         className={`perspective-1000 w-full md:w-[45%] ${isLeft ? 'md:pr-8' : 'md:pl-8'}`}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        style={{
+        style={isMobile ? {} : {
           transform: `perspective(1000px) rotateX(${tiltStyle.rotateX}deg) rotateY(${tiltStyle.rotateY}deg)`,
           transition: 'transform 0.1s ease-out',
         }}

@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Info } from 'lucide-react';
 import { Project } from '../../types';
@@ -11,14 +11,34 @@ interface ProjectCard3DProps {
 
 export default function ProjectCard3D({ project, index, onOpenModal }: ProjectCard3DProps) {
   const cardRef = useRef<HTMLDivElement>(null);
+  const lastMoveTime = useRef(0);
   const [tiltStyle, setTiltStyle] = useState({
     rotateX: 0,
     rotateY: 0,
     translateZ: 0,
   });
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  // Detect mobile
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(hover: none)');
+    setIsMobile(mediaQuery.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mediaQuery.addEventListener('change', handler);
+    return () => mediaQuery.removeEventListener('change', handler);
+  }, []);
+
+  // Throttled mouse move handler
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    // Skip on mobile
+    if (isMobile) return;
+
+    // Throttle to 60fps (16ms)
+    const now = Date.now();
+    if (now - lastMoveTime.current < 16) return;
+    lastMoveTime.current = now;
+
     if (!cardRef.current) return;
 
     const rect = cardRef.current.getBoundingClientRect();
@@ -36,7 +56,7 @@ export default function ProjectCard3D({ project, index, onOpenModal }: ProjectCa
       rotateY: rotateY,
       translateZ: 30,
     });
-  };
+  }, [isMobile]);
 
   const handleMouseLeave = () => {
     setTiltStyle({ rotateX: 0, rotateY: 0, translateZ: 0 });
@@ -62,7 +82,10 @@ export default function ProjectCard3D({ project, index, onOpenModal }: ProjectCa
       <motion.div
         className="transform-style-3d relative h-full overflow-hidden rounded-xl border border-non_photo_blue-400/20 bg-rich_black transition-shadow duration-300"
         style={{
-          transform: `perspective(1000px) rotateX(${tiltStyle.rotateX}deg) rotateY(${tiltStyle.rotateY}deg) translateZ(${tiltStyle.translateZ}px)`,
+          // On mobile: simple scale effect. On desktop: 3D tilt
+          transform: isMobile
+            ? `scale(${isHovered ? 1.02 : 1})`
+            : `perspective(1000px) rotateX(${tiltStyle.rotateX}deg) rotateY(${tiltStyle.rotateY}deg) translateZ(${tiltStyle.translateZ}px)`,
           transition: 'transform 0.15s ease-out',
           boxShadow: isHovered
             ? '0 25px 50px -12px rgba(3, 221, 255, 0.25), 0 0 30px rgba(3, 221, 255, 0.1)'
@@ -76,7 +99,10 @@ export default function ProjectCard3D({ project, index, onOpenModal }: ProjectCa
             alt={project.title}
             className="h-full w-full object-cover object-center"
             style={{
-              transform: `translateX(${tiltStyle.rotateY * 2}px) translateY(${tiltStyle.rotateX * 2}px) scale(${isHovered ? 1.1 : 1})`,
+              // Skip parallax on mobile
+              transform: isMobile
+                ? `scale(${isHovered ? 1.05 : 1})`
+                : `translateX(${tiltStyle.rotateY * 2}px) translateY(${tiltStyle.rotateX * 2}px) scale(${isHovered ? 1.1 : 1})`,
               transition: 'transform 0.3s ease-out',
             }}
           />
@@ -120,10 +146,10 @@ export default function ProjectCard3D({ project, index, onOpenModal }: ProjectCa
           </motion.div>
         </div>
 
-        {/* Content with subtle parallax */}
+        {/* Content with subtle parallax (desktop only) */}
         <motion.div
           className="p-6"
-          style={{
+          style={isMobile ? {} : {
             transform: `translateX(${tiltStyle.rotateY * -1}px) translateY(${tiltStyle.rotateX * -1}px)`,
             transition: 'transform 0.15s ease-out',
           }}

@@ -73,3 +73,31 @@
     animation: float 4s ease-in-out infinite;
   }
 }
+
+/* Mobile performance optimizations */
+@media (max-width: 768px) {
+  /* Disable backdrop blur on mobile - very expensive */
+  .backdrop-blur-sm,
+  .backdrop-blur-md,
+  .backdrop-blur-lg {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  /* Add solid fallback background for elements that had blur */
+  .backdrop-blur-sm,
+  .backdrop-blur-md {
+    background-color: rgba(0, 23, 31, 0.95) !important;
+  }
+}
+
+/* Respect user's reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
