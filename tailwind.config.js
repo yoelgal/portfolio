@@ -5,6 +5,8 @@ export default {
     extend: {
       boxShadow: {
         glow: '0 0 10px rgba(137, 210, 220, 0.7), 0 0 20px rgba(137, 210, 220, 0.5), 0 0 30px rgba(137, 210, 220, 0.3)',
+        'glow-lg': '0 0 20px rgba(3, 221, 255, 0.6), 0 0 40px rgba(3, 221, 255, 0.4), 0 0 60px rgba(3, 221, 255, 0.2)',
+        'glow-sm': '0 0 5px rgba(3, 221, 255, 0.5), 0 0 10px rgba(3, 221, 255, 0.3)',
       },
       colors: {
         non_photo_blue: {
@@ -70,12 +72,41 @@ export default {
       },
       animation: {
         'slide-in-from-left': 'slideInFromLeft 0.5s ease-out forwards',
+        'slide-in-from-right': 'slideInFromRight 0.5s ease-out forwards',
+        'slide-in-from-bottom': 'slideInFromBottom 0.5s ease-out forwards',
+        'fade-in': 'fadeIn 0.5s ease-out forwards',
+        'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
         bounce: 'bounce 1s infinite',
+        float: 'float 6s ease-in-out infinite',
+        'float-slow': 'float 8s ease-in-out infinite',
+        'float-fast': 'float 4s ease-in-out infinite',
+        'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
+        'spin-slow': 'spin 8s linear infinite',
+        'gradient-shift': 'gradientShift 8s ease infinite',
+        'text-shimmer': 'textShimmer 2s ease-in-out infinite',
+        'scale-in': 'scaleIn 0.3s ease-out forwards',
+        'tilt-in': 'tiltIn 0.6s ease-out forwards',
       },
       keyframes: {
         slideInFromLeft: {
           '0%': { transform: 'translateX(-10%)', opacity: '0' },
           '100%': { transform: 'translateX(0)', opacity: '1' },
+        },
+        slideInFromRight: {
+          '0%': { transform: 'translateX(10%)', opacity: '0' },
+          '100%': { transform: 'translateX(0)', opacity: '1' },
+        },
+        slideInFromBottom: {
+          '0%': { transform: 'translateY(20px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        fadeInUp: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
         bounce: {
           '0%, 100%': {
@@ -87,12 +118,83 @@ export default {
             animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)',
           },
         },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-20px)' },
+        },
+        pulseGlow: {
+          '0%, 100%': { boxShadow: '0 0 20px rgba(3, 221, 255, 0.4)' },
+          '50%': { boxShadow: '0 0 40px rgba(3, 221, 255, 0.8)' },
+        },
+        gradientShift: {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+        },
+        textShimmer: {
+          '0%': { backgroundPosition: '-200% center' },
+          '100%': { backgroundPosition: '200% center' },
+        },
+        scaleIn: {
+          '0%': { transform: 'scale(0.9)', opacity: '0' },
+          '100%': { transform: 'scale(1)', opacity: '1' },
+        },
+        tiltIn: {
+          '0%': { transform: 'perspective(1000px) rotateX(-10deg) translateY(20px)', opacity: '0' },
+          '100%': { transform: 'perspective(1000px) rotateX(0) translateY(0)', opacity: '1' },
+        },
       },
       fontFamily: {
         'source-code': ['"Source Code Pro"', 'monospace'],
         anton: ['Anton', 'sans-serif'],
       },
+      perspective: {
+        none: 'none',
+        500: '500px',
+        1000: '1000px',
+        2000: '2000px',
+      },
+      transformStyle: {
+        flat: 'flat',
+        '3d': 'preserve-3d',
+      },
+      backfaceVisibility: {
+        visible: 'visible',
+        hidden: 'hidden',
+      },
+      backgroundSize: {
+        '200%': '200%',
+        '300%': '300%',
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      addUtilities({
+        '.transform-style-3d': {
+          'transform-style': 'preserve-3d',
+        },
+        '.transform-style-flat': {
+          'transform-style': 'flat',
+        },
+        '.backface-hidden': {
+          'backface-visibility': 'hidden',
+        },
+        '.backface-visible': {
+          'backface-visibility': 'visible',
+        },
+        '.perspective-500': {
+          perspective: '500px',
+        },
+        '.perspective-1000': {
+          perspective: '1000px',
+        },
+        '.perspective-2000': {
+          perspective: '2000px',
+        },
+        '.preserve-3d': {
+          'transform-style': 'preserve-3d',
+        },
+      });
+    },
+  ],
 };
