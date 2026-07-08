@@ -1,0 +1,40 @@
+<!-- BEGIN better-dev -->
+## better-dev is wired here
+
+This repo uses **better-dev**: portable dev practices that run inside your agent (installed globally
+for your host, not vendored here). Say what you want; the right skill enters, and the chain runs itself:
+
+| You say... | Enters | Then, on its own |
+|---|---|---|
+| "add / build feature X", "I want Y" (non-trivial) | `/plan-grill` | -> `/autonomous-loop` -> `/pr-and-verify` |
+| "X is broken / failing / slow", "why is prod down" | `/diagnose` | -> `/autonomous-loop` -> `/pr-and-verify` |
+| "let's build an app that does Y", a new project or epic | `/groundwork` | sets the foundation, then per-item front-ends |
+| "ship it", "open a PR", "let's land this" | `/pr-and-verify` | -> `/release-promotion` on green |
+| "release this", "promote to master", "hotfix prod", "did the deploy land / is prod healthy" | `/release-promotion` | tags, verifies the release live, double-merges the hotfix |
+| "make it look good", "design the page" | `/design-brief` | -> `/plan-grill` or the loop |
+| "is this safe", a security pass on a risky diff | `/security-pass` | composed by `/review` automatically |
+| "is there a tool or skill for X" | `/tool-sourcing` | -> `/self-extension` only if discovery is empty |
+| "who calls this / what breaks if I change X" | `/codebase-map` | orientation, changes nothing |
+| "just push to the PR / use feat/ / skip the grill" | `/overrides` | records the standing default |
+| "remove better-dev" | `/uninstall` | unwires this repo, keeps your data |
+| a one-to-two-step change | no front-end - just make it | still in a worktree; verify before done |
+
+You name the entry, not every step: each front-end hands to `/autonomous-loop`, which hands a DONE
+result to `/pr-and-verify`, which hands a green PR to `/release-promotion`. Every change - even a
+trivial one that skips the front-ends - runs in
+its own git worktree, off `staging` (`/worktree-branching` sets it up first); branching is
+`feat/* (fix/*) -> staging -> master` (note: the default branch here is `master`, not `main`).
+
+- Durable rules and lessons: `.better-dev/bin/bd-mem` (backend: files). Project overrides in
+  `.better-dev/overrides.md` **win over defaults**, so read them first.
+- Hit a capability gap? Source an existing skill with `/tool-sourcing` before building anything; author
+  one with `/self-extension` only when discovery genuinely comes up empty. A skill you author here is
+  repo-scoped: it lands in this repo's own project skills dir, not the global tool.
+- `/guardrails-install` records this repo's real verify command and safety baseline; on a greenfield
+  project, `/groundwork` takes the idea to a shared foundation and parallelizable work-items.
+- `.better-dev/` holds tracked data (rules, overrides, learnings); `bin/` and `ledger/` are per-machine
+  and gitignored. A fresh clone re-runs `/onboard` to rebuild the `bin` bridge.
+- Re-run `/onboard` any time to wire in what's missing.
+
+better-dev is additive: it complements, never replaces, whatever else is installed.
+<!-- END better-dev -->

@@ -1,15 +1,277 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <link rel="icon" type="image/icon-x" href="/logo.png"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-    <title>Yoel Gal | Software Engineer</title>
-</head>
-<body>
-<div id="root"></div>
-<script type="module" src="/src/main.tsx"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yoel Gal</title>
+    <style>
+      :root {
+        --bg: #0d0d0d;
+        --text: #e4e4e4;
+        --muted: #888;
+        --accent: #6b9fff;
+        --border: #2a2a2a;
+      }
+
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 17px;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.75;
+        padding: 6rem 1.5rem 8rem;
+      }
+
+      main {
+        max-width: 620px;
+        margin: 0 auto;
+      }
+
+      /* ---------- Header ---------- */
+      .site-header {
+        margin-bottom: 5rem;
+      }
+
+      .site-header h1 {
+        font-size: 1.6rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: var(--text);
+        margin-bottom: 0.6rem;
+      }
+
+      .site-header .tagline {
+        font-size: 1rem;
+        color: var(--muted);
+      }
+
+      /* ---------- Sections ---------- */
+      section {
+        margin-bottom: 4rem;
+      }
+
+      section h2 {
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--muted);
+        margin-bottom: 1.2rem;
+      }
+
+      section p {
+        color: var(--text);
+        margin-bottom: 1rem;
+      }
+
+      /* ---------- Project list ---------- */
+      .project-list {
+        list-style: none;
+      }
+
+      .project-list li {
+        margin-bottom: 1.4rem;
+        padding-bottom: 1.4rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .project-list li:last-child {
+        border-bottom: none;
+      }
+
+      .project-list .name {
+        font-weight: 600;
+        color: var(--text);
+      }
+
+      .project-list .name a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .project-list .name a:hover {
+        color: var(--accent);
+      }
+
+      .project-list .desc {
+        font-size: 0.95rem;
+        color: var(--muted);
+        margin-top: 0.25rem;
+        line-height: 1.6;
+      }
+
+      .project-list .tag {
+        display: inline-block;
+        font-size: 0.75rem;
+        color: var(--muted);
+        margin-right: 0.6rem;
+        margin-top: 0.3rem;
+      }
+
+      /* ---------- Connect ---------- */
+      .connect-links {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem 2rem;
+      }
+
+      .connect-links a {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 0.95rem;
+        border-bottom: 1px solid transparent;
+        transition:
+          color 0.15s,
+          border-color 0.15s;
+      }
+
+      .connect-links a:hover {
+        color: var(--accent);
+        border-bottom-color: var(--accent);
+      }
+
+      /* ---------- Footer ---------- */
+      footer {
+        margin-top: 6rem;
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+
+      /* ---------- Responsive ---------- */
+      @media (max-width: 500px) {
+        body {
+          padding: 3rem 1rem 5rem;
+          font-size: 16px;
+        }
+        .site-header h1 {
+          font-size: 1.4rem;
+        }
+        .connect-links {
+          gap: 0.3rem 1.2rem;
+        }
+      }
+
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg: #fafafa;
+          --text: #1a1a1a;
+          --muted: #666;
+          --accent: #3b6fd4;
+          --border: #e5e5e5;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header class="site-header">
+        <h1>Yoel Gal</h1>
+        <p class="tagline">Building tools that make computers do the work.</p>
+      </header>
+
+      <section>
+        <h2>About</h2>
+        <p>
+          I'm a developer and founder splitting time between London and San Francisco. Previously a
+          software engineer at Airbus Defence &amp; Space, and completing my Computer Science degree
+          at the University of Manchester.
+        </p>
+        <p>
+          I build things that ship. Right now I'm building <strong>better-dev</strong>, an open
+          harness of portable dev practices that run inside the coding agent you already use. Before
+          that I co-founded <strong>Torch0</strong>, a supplier-side carbon accounting tool that
+          turns real operational data into signed, auditor-verifiable receipts for enterprise Scope
+          3 emissions; we raised over $10k in equity-free funding before winding it down. I also
+          co-founded Digested AI, an AI content curation platform with paying subscribers, and along
+          the way built ML APIs handling 10,000+ daily requests, embedded C firmware for a Formula
+          Student electric racecar, and projects across the full stack.
+        </p>
+        <p>
+          Soon I'll be co-authoring a research paper on using AI agents to accelerate advanced
+          materials discovery. More on that coming soon.
+        </p>
+        <p>
+          I think a lot about ontology: how systems model what they operate on, and why getting the
+          representation right matters before the automation.
+        </p>
+        <p>
+          I care about tools that are decoupled, model-agnostic, and open. I believe in shipping
+          fast, because momentum fixes most things.
+        </p>
+      </section>
+
+      <section>
+        <h2>Projects</h2>
+        <ul class="project-list">
+          <li>
+            <div class="name">
+              <a href="https://github.com/yoelgal/better-dev" target="_blank" rel="noopener"
+                >better-dev</a
+              >
+            </div>
+            <div class="desc">
+              Portable dev practices, packaged as skills that run inside the coding agent you
+              already use. Scope work into observable contracts, isolate changes in git worktrees,
+              and drive them to done through autonomous verification loops. Current focus.
+            </div>
+            <span class="tag">Agent Tooling</span>
+            <span class="tag">Open Source</span>
+          </li>
+          <li>
+            <div class="name">
+              <a href="https://torch0.com" target="_blank" rel="noopener">Torch0</a>
+            </div>
+            <div class="desc">
+              Replace estimates with receipts. Supplier-side carbon accounting that converts real
+              operational data into signed, auditor-verifiable receipts for enterprise Scope 3
+              disclosure under CSRD, IFRS S2, and SB 253. Raised over $10k in equity-free funding.
+              Co-founder. No longer active.
+            </div>
+            <span class="tag">Climate</span>
+            <span class="tag">Carbon Accounting</span>
+          </li>
+          <li>
+            <div class="name">
+              <a href="https://digestedai.com" target="_blank" rel="noopener">Digested AI</a>
+            </div>
+            <div class="desc">
+              AI-powered content curation platform. Personalized news digests delivered to your
+              inbox. Co-founded, built end-to-end from idea to revenue.
+            </div>
+            <span class="tag">Next.js</span>
+            <span class="tag">OpenAI</span>
+            <span class="tag">Stripe</span>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Connect</h2>
+        <ul class="connect-links">
+          <li><a href="https://github.com/yoelgal" target="_blank" rel="noopener">GitHub</a></li>
+          <li>
+            <a href="https://linkedin.com/in/yoel-gal" target="_blank" rel="noopener">LinkedIn</a>
+          </li>
+          <li><a href="mailto:yoelgal108@gmail.com">Email</a></li>
+        </ul>
+      </section>
+
+      <footer>&copy; 2026 Yoel Gal</footer>
+    </main>
+  </body>
 </html>
