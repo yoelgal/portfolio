@@ -1,0 +1,17 @@
+{"kind":"rule","text":"verify lint: npm run lint (package.json scripts.lint, exit 0 verified 2026-07-08)"}
+{"kind":"rule","text":"verify typecheck: npx tsc (noEmit via tsconfig; same tsc the build script runs; exit 0 verified 2026-07-08)"}
+{"kind":"rule","text":"verify build: npm run build (tsc && vite build)"}
+{"kind":"rule","text":"verify test: none - no test runner in this repo (gap, recorded not guessed)"}
+{"kind":"rule","text":"deploy-platform: Vercel (vercel.json at repo root; .vercel/repo.json project 'portfolio', team yoel-gal)"}
+{"kind":"rule","text":"deploy-url: https://yoelgal.com (production alias, probed 200 on 2026-07-08)"}
+{"kind":"rule","text":"deploy-status: vercel ls portfolio"}
+{"kind":"rule","text":"deploy-health: https://yoelgal.com (HTTP 200 = healthy)"}
+{"kind":"rule","text":"safety-denylist: .env*, **/secrets/**, *.pem, *.key, id_rsa*, vercel.json, .vercel/**, .github/workflows/**, package.json, package-lock.json"}
+{"kind":"rule","text":"safety-gate: infra/deploy config (vercel.json, .vercel, CI workflows) and dependency/version bumps; no auth, payments, or migrations surface in this repo"}
+{"kind":"rule","text":"safety-scope: 10"}
+{"kind":"rule","text":"merge-policy: auto-on-green (no branch protection on staging/master as of 2026-07-08)"}
+{"kind":"rule","text":"safety-secret-leak: a committed secret is compromised - revoke and reissue the key first, then purge history; deleting the line is not enough."}
+{"kind":"rule","text":"safety-gate-integrity: a red check is fixed, never silenced - do not disable a lint rule, skip or weaken a test, or lower a threshold to reach green."}
+{"kind":"rule","text":"context-hygiene: the repo's standing context (CLAUDE.md + always-loaded blocks) is a per-turn tax - keep it lean, prune stale lines on each release, and rewrite instructions written for an older model rather than carrying them forward."}
+{"kind":"rule","text":"supply-chain-debt: npm audit --omit=dev shows 10 vulns (5 moderate, 5 high) as of 2026-07-08; CI audit step is advisory (continue-on-error) until a reviewed dep bump clears it - then make it blocking."}
+{"kind":"rule","text":"safety-enforcement: hook (claude, PreToolUse bash+edit in .claude/settings.json, envelope verified 2026-07-08)"}
