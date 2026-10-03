@@ -10,183 +10,88 @@
         --bg: #0d0d0d;
         --text: #e4e4e4;
         --muted: #888;
-        --accent: #6b9fff;
-        --border: #2a2a2a;
       }
-
-      *,
-      *::before,
-      *::after {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      html {
-        font-size: 17px;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-      }
-
-      body {
-        font-family:
-          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        background: var(--bg);
-        color: var(--text);
-        line-height: 1.75;
-        padding: 6rem 1.5rem 8rem;
-      }
-
-      main {
-        max-width: 620px;
-        margin: 0 auto;
-      }
-
-      /* ---------- Header ---------- */
-      .site-header {
-        margin-bottom: 5rem;
-      }
-
-      .site-header h1 {
-        font-size: 1.6rem;
-        font-weight: 600;
-        letter-spacing: -0.02em;
-        color: var(--text);
-        margin-bottom: 0.6rem;
-      }
-
-      .site-header .tagline {
-        font-size: 1rem;
-        color: var(--muted);
-      }
-
-      /* ---------- Sections ---------- */
-      section {
-        margin-bottom: 4rem;
-      }
-
-      section h2 {
-        font-size: 0.85rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-        color: var(--muted);
-        margin-bottom: 1.2rem;
-      }
-
-      section p {
-        color: var(--text);
-        margin-bottom: 1rem;
-      }
-
-      /* ---------- Project list ---------- */
-      .project-list {
-        list-style: none;
-      }
-
-      .project-list li {
-        margin-bottom: 1.4rem;
-        padding-bottom: 1.4rem;
-        border-bottom: 1px solid var(--border);
-      }
-
-      .project-list li:last-child {
-        border-bottom: none;
-      }
-
-      .project-list .name {
-        font-weight: 600;
-        color: var(--text);
-      }
-
-      .project-list .name a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      .project-list .name a:hover {
-        color: var(--accent);
-      }
-
-      .project-list .desc {
-        font-size: 0.95rem;
-        color: var(--muted);
-        margin-top: 0.25rem;
-        line-height: 1.6;
-      }
-
-      .project-list .tag {
-        display: inline-block;
-        font-size: 0.75rem;
-        color: var(--muted);
-        margin-right: 0.6rem;
-        margin-top: 0.3rem;
-      }
-
-      /* ---------- Connect ---------- */
-      .connect-links {
-        list-style: none;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.4rem 2rem;
-      }
-
-      .connect-links a {
-        color: var(--muted);
-        text-decoration: none;
-        font-size: 0.95rem;
-        border-bottom: 1px solid transparent;
-        transition:
-          color 0.15s,
-          border-color 0.15s;
-      }
-
-      .connect-links a:hover {
-        color: var(--accent);
-        border-bottom-color: var(--accent);
-      }
-
-      /* ---------- Footer ---------- */
-      footer {
-        margin-top: 6rem;
-        font-size: 0.8rem;
-        color: var(--muted);
-      }
-
-      /* ---------- Responsive ---------- */
-      @media (max-width: 500px) {
-        body {
-          padding: 3rem 1rem 5rem;
-          font-size: 16px;
-        }
-        .site-header h1 {
-          font-size: 1.4rem;
-        }
-        .connect-links {
-          gap: 0.3rem 1.2rem;
-        }
-      }
-
       @media (prefers-color-scheme: light) {
         :root {
           --bg: #fafafa;
           --text: #1a1a1a;
           --muted: #666;
-          --accent: #3b6fd4;
-          --border: #e5e5e5;
         }
+      }
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font:
+          16px/1.7 -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          Roboto,
+          Helvetica,
+          Arial,
+          sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        -webkit-font-smoothing: antialiased;
+        padding: 6rem 1.5rem;
+      }
+      main {
+        max-width: 34rem;
+        margin: 0 auto;
+      }
+      h1 {
+        font-size: 1rem;
+        font-weight: 600;
+      }
+      h2 {
+        font-size: 1rem;
+        font-weight: 400;
+        color: var(--muted);
+        margin-bottom: 0.75rem;
+      }
+      section,
+      header {
+        margin-bottom: 3rem;
+      }
+      p + p {
+        margin-top: 0.75rem;
+      }
+      .muted,
+      .desc {
+        color: var(--muted);
+      }
+      ul {
+        list-style: none;
+      }
+      li + li {
+        margin-top: 0.75rem;
+      }
+      a {
+        color: inherit;
+        text-underline-offset: 3px;
+        text-decoration-color: var(--muted);
+      }
+      a:hover {
+        text-decoration-color: currentColor;
+      }
+      .connect-links {
+        display: flex;
+        gap: 1.5rem;
+      }
+      .connect-links li {
+        margin: 0;
       }
     </style>
   </head>
   <body>
     <main>
-      <header class="site-header">
+      <header>
         <h1>Yoel Gal</h1>
-        <p class="tagline">Building tools that make computers do the work.</p>
+        <p class="muted">Building tools that make computers do the work.</p>
       </header>
 
       <section>
-        <h2>About</h2>
         <p>
           Developer and founder between London and San Francisco. Previously a software engineer at
           Airbus Defence &amp; Space; Computer Science at the University of Manchester.
@@ -196,37 +101,24 @@
 
       <section>
         <h2>Projects</h2>
-        <ul class="project-list">
+        <ul>
           <li>
-            <div class="name">
-              <a href="https://notesthing.yoelgal.com" target="_blank" rel="noopener"
-                >Notes Thing</a
-              >
-            </div>
+            <a href="https://notesthing.yoelgal.com" target="_blank" rel="noopener">Notes Thing</a>
             <div class="desc">
               Record anything on your Mac and take notes as you listen. Each note lands in the
               on-device transcript at the second you wrote it.
             </div>
-            <span class="tag">macOS</span>
-            <span class="tag">Open Source</span>
           </li>
           <li>
-            <div class="name">
-              <a href="https://lookaway.yoelgal.com" target="_blank" rel="noopener">OpenLookAway</a>
-            </div>
+            <a href="https://lookaway.yoelgal.com" target="_blank" rel="noopener">OpenLookAway</a>
             <div class="desc">A free, open-source break reminder for your Mac.</div>
-            <span class="tag">macOS</span>
-            <span class="tag">Open Source</span>
           </li>
           <li>
-            <div class="name">
-              <a href="https://papers.town" target="_blank" rel="noopener">papers.town</a>
-            </div>
+            <a href="https://papers.town" target="_blank" rel="noopener">papers.town</a>
             <div class="desc">
               Letterboxd for research papers. Every paper you log becomes a building in your own
               8-bit town.
             </div>
-            <span class="tag">Web</span>
           </li>
         </ul>
       </section>
@@ -241,8 +133,6 @@
           <li><a href="mailto:yoelgal108@gmail.com">Email</a></li>
         </ul>
       </section>
-
-      <footer>&copy; 2026 Yoel Gal</footer>
     </main>
   </body>
 </html>
